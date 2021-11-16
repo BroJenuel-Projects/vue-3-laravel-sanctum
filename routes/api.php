@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/me', function (Request $request) {
+        return auth()->user();
+    });
+    //logout/signout user
+    Route::post('/logout', [AuthenticationController::class, 'signOut']);
 });
+
+//login user
+Route::post('/login', [AuthenticationController::class, 'signIn']);

@@ -11,6 +11,11 @@ const routes = [
         name: "SignIn",
         component: () => import('./../views/SignIn.vue'),
     },
+    {
+        path: "/account",
+        name: "Account",
+        component: () => import('./../views/Account.vue'),
+    },
 ];
 
 export default createRouter({

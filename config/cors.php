@@ -24,7 +24,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => [env('FRONT_URL'), env('APP_URL')],
 
     'allowed_origins_patterns' => [],
 
