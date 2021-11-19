@@ -1,7 +1,9 @@
 <?php
+$isDevelopment = env('APP_ENV') == 'local';
+$developmentAllowedOrigins = [ 'http://localhost:8000', 'http://localhost:3000', 'http://127.0.0.1:8000' ];
+$prodAllowedOrigins = [env('APP_URL')];
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Cross-Origin Resource Sharing (CORS) Configuration
@@ -24,7 +26,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONT_URL'), env('APP_URL')],
+    'allowed_origins' => $isDevelopment ? array_merge($developmentAllowedOrigins, $prodAllowedOrigins) : $prodAllowedOrigins,
 
     'allowed_origins_patterns' => [],
 
