@@ -27,3 +27,24 @@ Run `yarn serve`. This will serve the web app on your development mode.
 #### To Build the Front End
 Run `yarn build` This will build the frontend app to add it in the laravels public folder so that it can be easily accessed.
 
+
+
+### Deploying
+
+##### Create `env` file on your server
+you must create this because most of the variables inside the env files are very important. Just **copy** the `.env.example` and change the variables values.
+
+Notes:
+- Make sure that `APP_ENV` is equals to `prod`. To Tell the server that is in production.
+```env
+...
+APP_ENV=prod
+...
+```
+
+##### example Deploy Commands
+```js
+... // clone/checkout your repositories
+yarn setup //This will install all the dependencies
+yarn front:build // this will build the frontend and adds it in public/app
+```
