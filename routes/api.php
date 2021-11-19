@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,13 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//login user
+Route::post('/login', [AuthenticationController::class, 'signIn']);
+
+// All Protected API Routes should be added inside the `asuth:sanctum`
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/me', function (Request $request) {
-        return auth()->user();
+        return $request->user();
     });
     //logout/signout user
     Route::post('/logout', [AuthenticationController::class, 'signOut']);
+    Route::resource('user', UserController::class);
 });
 
-//login user
-Route::post('/login', [AuthenticationController::class, 'signIn']);
+

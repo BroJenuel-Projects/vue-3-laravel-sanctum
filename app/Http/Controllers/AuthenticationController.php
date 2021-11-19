@@ -28,7 +28,6 @@ class AuthenticationController extends Controller
     public function signOut()
     {
         auth()->user()->tokens()->delete();
-
         return [
             'message' => 'Tokens Revoked'
         ];
