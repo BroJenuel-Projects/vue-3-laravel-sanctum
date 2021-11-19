@@ -1,5 +1,7 @@
 # INTRO
-Hi! I am Jenuel Ganawed, I made this template so that If i have new projects in the future. It will Be easy to Setup a Project.
+Hi! I am Jenuel Ganawed, I made this template so that If i have new projects in the future. It will Be easy to Setup a Project. I make my own templates, for easy project setup and ready auth for user login and logout.
+
+> You can check more in my Project Template Repo in https://github.com/organizations/bro-jenuel-project-templates/settings/profile
 
 For This Project This are the tools/things That I included.
 - ***vue 3***
@@ -24,3 +26,4 @@ Run `yarn serve`. This will serve the web app on your development mode.
 
 #### To Build the Front End
 Run `yarn build` This will build the frontend app to add it in the laravels public folder so that it can be easily accessed.
+
