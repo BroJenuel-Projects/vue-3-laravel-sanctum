@@ -12,6 +12,8 @@ For This Project This are the tools/things That I included.
   - I chose this over tailwind because I feel like WindiCSS is a lot faster and has more features than tailwind css
 - ***sass/scss***
   - i like using scss or sass, its is more easier and faster when styling.
+- Prettier
+  - for this one, this does not need to be installed. I like using it because I can customize my way of coding. Enabling prettier in VS Code really makes the code nicer and more readable.
 
 > **Recommendation:**
 > - I Recommend that you use `yarn`, I believe its a lot better than `npm`.
