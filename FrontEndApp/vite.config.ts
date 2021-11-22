@@ -1,5 +1,6 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import WindiCSS from 'vite-plugin-windicss';
 
 // for more configuration check vites website =>  https://vitejs.dev/config/
 export default ({ mode }) => {
@@ -8,10 +9,9 @@ export default ({ mode }) => {
 
     return defineConfig({
         build: {
-            outDir: "./../public/app",
+            outDir: './../public/app',
         },
-        base: isDevelopment ? "/" : "/app/",
-        plugins: [vue()],
+        base: isDevelopment ? '/' : '/app/',
+        plugins: [vue(), WindiCSS()],
     });
-
-}
+};
