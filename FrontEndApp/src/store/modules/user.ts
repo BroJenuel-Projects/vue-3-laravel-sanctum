@@ -1,4 +1,4 @@
-import axios from "./../../service/axios";
+import axios from './../../service/axios';
 
 export const userState = {
     state: () => ({
@@ -17,50 +17,49 @@ export const userState = {
 
     actions: {
         async signIn({ dispatch, commit }: any, credentials: any) {
-            await axios.get("/sanctum/csrf-cookie");
-            await axios
-                .post("/api/login", credentials)
-                .then(({ data }: any) => {
-                    if (data) {
-                        if (data.user) commit("SET_USER", data.user);
-                        if (data.access_token)
-                            localStorage.setItem("token", data.access_token);
-                    }
-                });
+            await axios.get('/sanctum/csrf-cookie');
+            await axios.post('/api/login', credentials).then(({ data }: any) => {
+                if (data) {
+                    if (data.user) commit('SET_USER', data.user);
+                    if (data.access_token) localStorage.setItem('token', data.access_token);
+                }
+            });
 
-            if (localStorage.getItem("token")) return dispatch("me");
+            if (localStorage.getItem('token')) return dispatch('me');
         },
 
         removeUser({ commit }: any) {
-            commit("SET_AUTHENTICATED", false);
-            commit("SET_USER", null);
-            localStorage.removeItem("token");
+            commit('SET_AUTHENTICATED', false);
+            commit('SET_USER', null);
+            localStorage.removeItem('token');
         },
 
         async signOut({ dispatch }: any) {
-            if (localStorage.getItem("token"))
+            if (localStorage.getItem('token'))
                 return await axios
-                    .post("/api/logout")
+                    .post('/api/logout')
                     .then((response: any) => {
-                        dispatch("removeUser");
+                        dispatch('removeUser');
                         return response;
                     })
                     .catch((e) => {
-                        dispatch("removeUser");
+                        dispatch('removeUser');
                         return e;
                     });
         },
 
         me({ commit, dispatch }: any) {
-            if (localStorage.getItem("token"))
+            if (localStorage.getItem('token'))
                 return axios
-                    .post("/api/me")
+                    .post('/api/me')
                     .then((response) => {
-                        commit("SET_AUTHENTICATED", true);
-                        commit("SET_USER", response.data);
+                        commit('SET_AUTHENTICATED', true);
+                        commit('SET_USER', response.data);
+                        return response.data;
                     })
-                    .catch(() => {
-                        dispatch("removeUser");
+                    .catch((error) => {
+                        dispatch('removeUser');
+                        return error;
                     });
         },
     },

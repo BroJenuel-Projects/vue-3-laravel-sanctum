@@ -1,9 +1,15 @@
-import { createStore } from "vuex";
-import { userState } from "./modules/user";
+import { createStore } from 'vuex';
+import { userState } from './modules/user';
 
 export default createStore({
-    state: {},
-    modules: {
-        user: userState
+    state: {
+        isDark: false,
+        primaryColors: {
+            primaryColorDark: '#3cb1ff',
+            primaryColorLight: '#008fee',
+        },
     },
-})
+    modules: {
+        user: userState,
+    },
+});
