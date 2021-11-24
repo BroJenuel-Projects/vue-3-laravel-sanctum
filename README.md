@@ -1,7 +1,7 @@
 # INTRO
 Hi! I am Jenuel Ganawed, I made this template so that If i have new projects in the future. It will Be easy to Setup a Project. I make my own templates, for easy project setup and ready auth for user login and logout.
 
-> You can check more in my Project Template Repo in https://github.com/organizations/bro-jenuel-project-templates/settings/profile
+> You can check more in my Project Template Repo in https://github.com/bro-jenuel-project-templates
 
 For This Project This are the tools/things That I included.
 - ***vue 3***
