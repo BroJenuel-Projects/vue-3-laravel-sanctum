@@ -2,12 +2,12 @@
     <div>
         <NCard class="max-w-500px mx-auto mt-10">
             <NSpace vertical>
-                <NInput v-model:value="email" type="text" placeholder="Basic Input">
+                <NInput v-model:value="email" type="text" placeholder="Enter Username or Email">
                     <template #prefix>
                         <i class="bx bx-user text-size-18px"></i>
                     </template>
                 </NInput>
-                <NInput v-model:value="password" :type="showPassword ? 'text' : 'password'" placeholder="Basic Textarea">
+                <NInput v-model:value="password" :type="showPassword ? 'text' : 'password'" placeholder="Enter Your Password Here">
                     <template #prefix>
                         <i class="bx bx-key text-size-20px"></i>
                     </template>

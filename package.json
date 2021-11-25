@@ -11,10 +11,15 @@
         "setup:back": "composer install",
         "setup": "yarn setup:back && yarn setup:front && yarn",
         "production": "mix --production",
+        "@comment front:serve": "This will serve the frontend",
         "front:serve": "cd FrontEndApp && yarn dev",
         "front:build": "cd FrontEndApp && yarn build",
-        "serve": "concurrently \"php artisan serve\" \"yarn front:serve\""
+        "@comment serve": "This is when in development mode only.",
+        "serve": "concurrently \"php -S localhost:8000 -t public\" \"yarn front:serve\"",
+        "@comment deploy": "This is when deploying in the server",
+        "deploy": "yarn setup && yarn front:build"
     },
+
     "devDependencies": {
         "axios": "^0.21",
         "concurrently": "^6.4.0",
@@ -22,7 +27,5 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
     },
-    "dependencies": {
-        "boxicons": "^2.0.9"
-    }
+    "dependencies": {}
 }

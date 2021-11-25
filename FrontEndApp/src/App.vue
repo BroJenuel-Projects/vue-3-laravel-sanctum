@@ -6,10 +6,10 @@
     </NConfigProvider>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted, computed, ref, watch, reactive, onBeforeMount } from 'vue';
+import { defineComponent, computed, ref, watch, reactive, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import { NConfigProvider, darkTheme, NLayout } from 'naive-ui';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 export default defineComponent({
     components: {
@@ -22,6 +22,7 @@ export default defineComponent({
         const isDark = computed(() => store.state.isDark);
         const primaryColors = computed(() => store.state.primaryColors);
         const router = useRouter();
+        const route = useRoute();
         const themeOverrides = reactive({
             common: {
                 primaryColor: primaryColors.value.primaryColorLight,
@@ -47,7 +48,7 @@ export default defineComponent({
                 await store
                     .dispatch('me')
                     .then(() => {
-                        router.push('/dashboard');
+                        if (route.path === '/') router.push('/dashboard');
                     })
                     .catch(() => {
                         router.push('/');
