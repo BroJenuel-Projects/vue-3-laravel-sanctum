@@ -1,3 +1,31 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import { NCard, NInput, NSpace, NButton } from 'naive-ui';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+
+const store = useStore();
+const email = ref('');
+const password = ref('');
+const showPassword = ref(false);
+const router = useRouter();
+
+async function submit() {
+    await store
+        .dispatch('signIn', {
+            email: email.value,
+            password: password.value,
+        })
+        .then(() => {
+            router.push('/dashboard');
+        })
+        .catch((e) => {
+            if (e instanceof Error) console.log(e.message);
+            else console.log(e);
+        });
+}
+</script>
+
 <template>
     <div>
         <NCard class="max-w-500px mx-auto mt-10">
@@ -21,45 +49,3 @@
         </NCard>
     </div>
 </template>
-<script lang="ts">
-import { defineComponent, ref, onBeforeMount } from 'vue';
-import { NCard, NInput, NSpace, NButton } from 'naive-ui';
-import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';
-
-export default defineComponent({
-    components: {
-        NCard,
-        NInput,
-        NSpace,
-        NButton,
-    },
-    setup() {
-        const store = useStore();
-        const email = ref('');
-        const password = ref('');
-        const showPassword = ref(false);
-        const router = useRouter();
-
-        return {
-            email,
-            password,
-            showPassword,
-            submit: async () => {
-                await store
-                    .dispatch('signIn', {
-                        email: email.value,
-                        password: password.value,
-                    })
-                    .then(() => {
-                        router.push('/dashboard');
-                    })
-                    .catch((e) => {
-                        if (e instanceof Error) console.log(e.message);
-                        else console.log(e);
-                    });
-            },
-        };
-    },
-});
-</script>
